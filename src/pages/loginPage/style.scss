@@ -1,0 +1,27 @@
+.container-login {
+    background-color: var(--background-color-light);
+    width: 100vw;
+    height: 100vh;
+    color: var(--text-color-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .content-login {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 420px;
+
+        img {
+            margin-bottom: 1.5em;
+            width: 80px;
+        }
+
+        span {
+            margin-bottom: 1em;
+        }
+    }
+}
