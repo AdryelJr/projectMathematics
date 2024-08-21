@@ -1,0 +1,23 @@
+.div-btn-choice{
+    display: flex;
+    flex-direction: column;
+
+    h2{
+        margin-bottom: 1em;
+    }
+}
+
+.btn-escolha{
+    background-color: var(--background-button);
+    padding: 1em 1.5em;
+    font-weight: bold;
+    font-size: 12pt;
+    margin: 10px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+
+    &:hover{
+        background-color: var(--background-button-hover);
+    }
+}

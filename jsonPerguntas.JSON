@@ -1,0 +1,20 @@
+{
+    "questions": {
+        "easy": {
+            "1": {
+                "id": "1",
+                "text": "Qual é 2 + 2?",
+                "options": ["3", "4", "5", "6"],
+                "correctAnswer": "4"
+            }
+        },
+        "hard": {
+            "1": {
+                "id": "1",
+                "text": "Qual é a fórmula de Bhaskara?",
+                "options": ["x = (-b ± √(b² - 4ac)) / 2a", "x = (-b ± √(b² + 4ac)) / 2a", "x = (-b ± √(b² - 2ac)) / 2a", "x = (-b ± √(b² + 2ac)) / 2a"],
+                "correctAnswer": "x = (-b ± √(b² - 4ac)) / 2a"
+            }
+        }
+    }
+}
