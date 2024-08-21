@@ -1,3 +1,4 @@
+// Questions.tsx
 import { useEffect, useState } from 'react';
 import { getDatabase, ref, get } from 'firebase/database';
 
@@ -10,8 +11,11 @@ interface Question {
 
 export function Questions({ level }: { level: 'easy' | 'hard' }) {
     const [questions, setQuestions] = useState<Question[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [userAnswer, setUserAnswer] = useState<string | null>(null);
+    const [feedback, setFeedback] = useState<string | null>(null);
+    const [isCompleted, setIsCompleted] = useState(false);
+    const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
 
     useEffect(() => {
         const fetchQuestions = async () => {
@@ -30,39 +34,71 @@ export function Questions({ level }: { level: 'easy' | 'hard' }) {
                     }));
                     setQuestions(formattedQuestions);
                 } else {
-                    setError("Nenhuma pergunta encontrada.");
+                    setFeedback("Nenhuma pergunta encontrada.");
                 }
             } catch (err) {
-                setError("Erro ao buscar perguntas.");
-            } finally {
-                setLoading(false);
+                setFeedback("Erro ao buscar perguntas.");
             }
         };
 
         fetchQuestions();
     }, [level]);
 
-    if (loading) {
-        return <p>Carregando perguntas...</p>;
+    useEffect(() => {
+        if (isFeedbackVisible) {
+            const timer = setTimeout(() => {
+                if (currentQuestionIndex < questions.length - 1) {
+                    setCurrentQuestionIndex(currentQuestionIndex + 1);
+                    setUserAnswer(null);
+                    setFeedback(null);
+                    setIsFeedbackVisible(false);
+                } else {
+                    setIsCompleted(true);
+                }
+            }, 4000); // Espera 4 segundos antes de avançar para a próxima pergunta
+
+            return () => clearTimeout(timer);
+        }
+    }, [isFeedbackVisible, currentQuestionIndex, questions.length]);
+
+    const handleAnswer = (answer: string) => {
+        const currentQuestion = questions[currentQuestionIndex];
+        if (answer === currentQuestion.correctAnswer) {
+            setFeedback("Parabéns! Resposta correta.");
+        } else {
+            setFeedback(`Resposta errada. A resposta correta é: ${currentQuestion.correctAnswer}`);
+        }
+        setUserAnswer(answer);
+        setIsFeedbackVisible(true);
+    };
+
+    if (isCompleted) {
+        return <p>Exercícios concluídos! Parabéns por completar o quiz.</p>;
     }
 
-    if (error) {
-        return <p>{error}</p>;
+    if (!questions.length) {
+        return <p>{feedback || "Carregando perguntas..."}</p>;
     }
+
+    const currentQuestion = questions[currentQuestionIndex];
 
     return (
         <div>
-            <h2>Perguntas de nível {level}</h2>
-            {questions.map(question => (
-                <div key={question.id}>
-                    <p>{question.text}</p>
-                    <div>
-                        {question.options.map(option => (
-                            <button className='btn-escolha' key={option}>{option}</button>
-                        ))}
-                    </div>
-                </div>
-            ))}
+            <h2>Pergunta {currentQuestionIndex + 1}</h2>
+            <p>{currentQuestion.text}</p>
+            <div>
+                {currentQuestion.options.map(option => (
+                    <button
+                        className='btn-escolha'
+                        key={option}
+                        onClick={() => handleAnswer(option)}
+                        disabled={isFeedbackVisible}
+                    >
+                        {option}
+                    </button>
+                ))}
+            </div>
+            {feedback && <p>{feedback}</p>}
         </div>
     );
 }
