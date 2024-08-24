@@ -2,28 +2,29 @@
     width: 100%;
 
     button{
+        height: 4em;
         margin: auto;
-        width: 80%;
-        border-radius: 5px;
+        width: 100%;
+        border-radius: 20px;
         display: flex;
         align-items: center;
         padding: 12px;
         justify-content: center;
-        margin-top: 2em;
+        margin-top: 3em;
         border: none;
         font-weight: bold;
-        background-color: var(--background-button);
+        background-color: var(--background-button-google);
         color: var(--color);
         cursor: pointer;
         transition: all .1s ease-in-out;
 
         svg{
-            width: 1.5em;
+            width: 1.8em;
             margin-right: 10px;
         }
 
         &:hover{
-            background-color: var(--background-button-hover);
+            background-color: var(--background-button-google-hover);
         }
     }
 }

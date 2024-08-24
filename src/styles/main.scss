@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 :root{
-    --background-button: rgb(5, 175, 93);
-    --background-button-hover: rgb(10, 119, 66);
-    --color: #fff ;
+    --background-button-google: rgb(238, 238, 238);
+    --background-button-google-hover:rgb(214, 214, 214);
+    --color: #1E1E1E ;
 }
 
 * {
@@ -15,8 +15,8 @@
 }
 
 body{
-    background-color: #333;
-    color: #fff;
+    background-color: #fff;
+    color: #1E1E1E;
     transition: all ease-in-out .5s;
 }
 
@@ -31,4 +31,9 @@ body{
 
 .fade-out {
     opacity: 0;
+}
+
+.error-message{
+    margin-top: 10px;
+    color: rgb(196, 21, 21);
 }
