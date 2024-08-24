@@ -1,21 +1,17 @@
-import  { useState } from 'react';
-import { Questions } from './Quenstion';
-import { QuestionLevelSelector } from './QuestionsLevelSelector';
+import { Link } from 'react-router-dom'
+import './style.scss'
 
-export function PlayPage() {
-    const [selectedLevel, setSelectedLevel] = useState<'easy' | 'hard' | null>(null);
-
-    const handleLevelSelect = (level: 'easy' | 'hard') => {
-        setSelectedLevel(level);
-    };
-
+export function Play() {
     return (
-        <div>
-            {selectedLevel === null ? (
-                <QuestionLevelSelector onLevelSelect={handleLevelSelect} />
-            ) : (
-                <Questions level={selectedLevel} />
-            )}
+        <div className='container-play'>
+            <h1>ESCOLHA A OPERAÇÃO</h1>
+
+            <ul>
+                <Link to="addition">ADIÇÃO</Link>
+                <Link to="subtraction">SUBTRAÇÃO</Link>
+                <Link to="multiplication">MULTIPLICAÇÃO</Link>
+                <Link to="division">DIVISÃO</Link>
+            </ul>
         </div>
-    );
+    )
 }

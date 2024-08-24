@@ -1,23 +1,51 @@
-.div-btn-choice{
-    display: flex;
-    flex-direction: column;
-
-    h2{
+.container-play {
+    h1 {
+        color: #fff;
+        font-weight: 900;
+        font-size: 3em;
         margin-bottom: 1em;
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        a {
+            border-radius: 25px;
+            width: 80%;
+            height: 1.8em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            margin-bottom: 0.8em;
+            background-color: #fff;
+            color: #1E1E1E;
+            font-size: 2em;
+            font-weight: 900;
+            transition: transform 0.2s;
+
+            &:hover {
+                transform: scale(0.85);
+            }
+        }
+
     }
 }
 
-.btn-escolha{
-    background-color: var(--background-button);
-    padding: 1em 1.5em;
-    font-weight: bold;
-    font-size: 12pt;
-    margin: 10px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
+@media (width >=1400px) {
+    .container-play {
+        h1 {
+            margin-bottom: 2em;
+        }
 
-    &:hover{
-        background-color: var(--background-button-hover);
+        ul {
+            a {
+                margin-bottom: 1.2em;
+                height: 2.5em;
+            }
+        }
     }
 }

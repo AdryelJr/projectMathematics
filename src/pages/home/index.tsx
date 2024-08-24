@@ -1,14 +1,11 @@
 import './style.scss';
 import { useAuth } from '../../hooks/useAuth';
 import { useEffect, useState } from 'react';
-import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { ButtonSair } from '../../components/Buttons/ButtonSair';
-import { usePlayButton } from '../../contexts/playButtonContext';
+import { useNavigate, useLocation, Link, Outlet } from 'react-router-dom';
 
 export function Home() {
-    const { playButton, setPlayButton } = usePlayButton();
     const [isVisible, setIsVisible] = useState(true);
-    const { user } = useAuth();
+    const { user, deslogar } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -23,35 +20,32 @@ export function Home() {
 
         const timer = setTimeout(() => {
             setIsVisible(true);
-        }, 500); // Duração da transição
+        }, 300); // Duração da transição
 
         return () => clearTimeout(timer);
     }, [location.pathname]);
 
-    function handlePlay() {
-        setPlayButton(true);
-        navigate('/play');
+    function sair() {
+        deslogar();
     }
+    const isActive = (path: string) => {
+        return location.pathname === path;
+    };
 
     return (
         <div className={`main-container ${isVisible ? 'fade-in' : 'fade-out'}`}>
-            <header>
-                <div className='div-title'>
-                    <p>Bem-Vindo {user ? user.name : 'deslogado'}!</p>
-                </div>
-            </header>
 
-            <main>
-                <div className='div-content'>
-                    {!playButton ? (
-                        <button className='btn-comecar' onClick={handlePlay}>Começar</button>
-                    ) : null}
-                    <Outlet />
-                </div>
-                <div>
-                    <ButtonSair />
-                </div>
-            </main>
+            <div className='div-opcoes'>
+                <Link to='/' className={isActive('/') ? 'active' : ''}>JOGAR</Link>
+                <Link to='/profile' className={isActive('/profile') ? 'active' : ''}>PERFIL</Link>
+                <button onClick={sair}>SAIR</button>
+            </div>
+
+            <div className='div-content'>
+                <main>
+                    <Outlet/>
+                </main>
+            </div>
         </div>
     );
 }
