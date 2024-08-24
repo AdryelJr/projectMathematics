@@ -36,14 +36,14 @@ export function Home() {
         <div className={`main-container ${isVisible ? 'fade-in' : 'fade-out'}`}>
 
             <div className='div-opcoes'>
-                <Link to='/' className={isActive('/') ? 'active' : ''}>JOGAR</Link>
+                <Link to='/' className={isActive('/') || isActive('/addition') || isActive('/subtraction') || isActive('/multiplication') || isActive('/division') ? 'active' : ''}>JOGAR</Link>
                 <Link to='/profile' className={isActive('/profile') ? 'active' : ''}>PERFIL</Link>
                 <button onClick={sair}>SAIR</button>
             </div>
 
             <div className='div-content'>
                 <main>
-                    <Outlet/>
+                    <Outlet />
                 </main>
             </div>
         </div>

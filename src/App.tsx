@@ -8,6 +8,10 @@ import { LoginOutlet } from './pages/loginPage/Login';
 import { RegisterOutlet } from './pages/loginPage/Register';
 import { Profile } from './pages/profile';
 import { Play } from './pages/play';
+import { Addition } from './Questions/Addition';
+import { Division } from './Questions/Division';
+import { Multiplication } from './Questions/Multiplication';
+import { Subtraction } from './Questions/Subtraction';
 
 export function App() {
 
@@ -21,6 +25,10 @@ export function App() {
               <Route path='/' element={<Play />} />
               <Route path='/' element={<Play />} />
               <Route path='/profile' element={<Profile />} />
+              <Route path="addition" element={<Addition />} />
+              <Route path="subtraction" element={<Subtraction />} />
+              <Route path="multiplication" element={<Multiplication />} />
+              <Route path="division" element={<Division />} />
             </Route>
             <Route path='/login' element={<Login />}>
               <Route path='/login' element={<LoginOutlet />} />
