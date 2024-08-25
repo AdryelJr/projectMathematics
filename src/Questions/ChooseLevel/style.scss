@@ -1,0 +1,40 @@
+.container-chooseLevel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h2{
+        color: #fff;
+        font-size: 2.5em;
+        margin-bottom: 2em;
+        font-weight: 900;
+    }
+
+    button{
+        background-color: #fff;
+        font-weight: 900;
+        cursor: pointer;
+        padding: .5em;
+        width: 50%;
+        border-radius: 20px;
+        border: none;
+        box-shadow: 1px 1px 4px;
+        margin-bottom: 1em;
+        font-size: 1.5em;
+        transition: transform 0.2s;
+
+        &:hover{
+            transform: scale(0.85);
+        }
+    }
+}
+
+@media (width >=1400px) {
+    .container-chooseLevel {
+        button {
+            padding: .9em;
+            margin-bottom: 1.5em;
+        }
+    }
+}

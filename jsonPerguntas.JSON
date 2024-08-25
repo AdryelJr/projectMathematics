@@ -1,19 +1,272 @@
 {
     "questions": {
-        "easy": {
-            "1": {
-                "id": "1",
-                "text": "Qual é 2 + 2?",
-                "options": ["3", "4", "5", "6"],
-                "correctAnswer": "4"
+        "addition": {
+            "easy": {
+                "1": {
+                    "id": "1",
+                    "text": "O gato viu 1 passarinho e depois mais 1 voando. Quantos passarinhos ele viu no total?",
+                    "options": ["1", "2", "3"],
+                    "correctAnswer": "2"
+                },
+                "2": {
+                    "id": "2",
+                    "text": "Carlos tem 2 carrinhos e ganhou mais 1 de presente. Com quantos carrinhos ele ficou?",
+                    "options": ["1", "2", "3"],
+                    "correctAnswer": "3"
+                },
+                "3": {
+                    "id": "3",
+                    "text": "Uma loja tem 2 balões vermelhos e 2 balões azuis. Quantos balões há ao todo?",
+                    "options": ["2", "3", "4"],
+                    "correctAnswer": "4"
+                },
+                "4": {
+                    "id": "4",
+                    "text": "Na mesa, há 3 maçãs. Se você colocar mais 2 maçãs, quantas maçãs ficarão na mesa?",
+                    "options": ["5", "6", "8"],
+                    "correctAnswer": "5"
+                },
+                "5": {
+                    "id": "5",
+                    "text": "Em uma festa, 2 crianças entraram na piscina, depois mais 4 pularam. Quantas crianças estão na piscina?",
+                    "options": ["4", "6", "8"],
+                    "correctAnswer": "6"
+                },
+                "6": {
+                    "id": "6",
+                    "text": "Na cesta, há 1 maçã, 1 banana e 1 laranja. Quantas frutas há na cesta?",
+                    "options": ["3", "4", "5"],
+                    "correctAnswer": "3"
+                },
+                "7": {
+                    "id": "7",
+                    "text": "Uma caixa tem 2 bonecos, 1 carrinho e 3 blocos de montar. Quantos brinquedos há na caixa?",
+                    "options": ["2", "3", "6"],
+                    "correctAnswer": "6"
+                },
+                "8": {
+                    "id": "8",
+                    "text": "Em uma sala de aula, 5 crianças estão desenhando e 4 estão lendo. Quantas crianças estão ocupadas?",
+                    "options": ["7", "8", "9"],
+                    "correctAnswer": "9"
+                },
+                "9": {
+                    "id": "9",
+                    "text": "Uma sorveteria vendeu 9 sorvetes de morango e 6 de chocolate. Quantos sorvetes foram vendidos?",
+                    "options": ["9", "12", "15"],
+                    "correctAnswer": "15"
+                },
+                "10": {
+                    "id": "10",
+                    "text": "Em um zoológico, há 3 tigres, 4 macacos e 5 girafas. Mais tarde, chegam 2 leões. Quantos animais há no zoológico agora?",
+                    "options": ["12", "14", "4"],
+                    "correctAnswer": "14"
+                }
+            },
+            "hard": {
+                "1": {
+                    "id": "1",
+                    "text": "Qual é a fórmula de Bhaskara?",
+                    "options": [
+                        "x = (-b ± √(b² - 4ac)) / 2a",
+                        "x = (-b ± √(b² + 4ac)) / 2a",
+                        "x = (-b ± √(b² - 2ac)) / 2a",
+                        "x = (-b ± √(b² + 2ac)) / 2a"
+                    ],
+                    "correctAnswer": "x = (-b ± √(b² - 4ac)) / 2a"
+                }
             }
         },
-        "hard": {
-            "1": {
-                "id": "1",
-                "text": "Qual é a fórmula de Bhaskara?",
-                "options": ["x = (-b ± √(b² - 4ac)) / 2a", "x = (-b ± √(b² + 4ac)) / 2a", "x = (-b ± √(b² - 2ac)) / 2a", "x = (-b ± √(b² + 2ac)) / 2a"],
-                "correctAnswer": "x = (-b ± √(b² - 4ac)) / 2a"
+        "subtraction": {
+            "easy": {
+                "1": {
+                    "id": "1",
+                    "text": "João tinha 2 balas e comeu 1. Quantas balas sobraram?",
+                    "options": ["1", "2", "3"],
+                    "correctAnswer": "1"
+                },
+                "2": {
+                    "id": "2",
+                    "text": "Maria tinha 3 maçãs e deu 1 para a amiga. Quantas maçãs ela tem agora?",
+                    "options": ["1", "2", "3"],
+                    "correctAnswer": "2"
+                },
+                "3": {
+                    "id": "3",
+                    "text": "Uma árvore tinha 4 passarinhos. Se 2 voaram embora, quantos ficaram?",
+                    "options": ["3", "4", "2"],
+                    "correctAnswer": "2"
+                },
+                "4": {
+                    "id": "4",
+                    "text": "Uma sorveteria tinha 7 sorvetes e vendeu 7. Quantos sorvetes sobraram?",
+                    "options": ["3", "0", "7"],
+                    "correctAnswer": "0"
+                },
+                "5": {
+                    "id": "5",
+                    "text": "Em uma escola, havia 10 alunos na sala de aula. Se 6 foram para o recreio, quantos ficaram na sala?",
+                    "options": ["1", "8", "4"],
+                    "correctAnswer": "4"
+                },
+                "6": {
+                    "id": "6",
+                    "text": "Uma caixa tinha 12 chocolates, mas 7 foram comidos. Quantos chocolates sobraram?",
+                    "options": ["5", "6", "7"],
+                    "correctAnswer": "5"
+                },
+                "7": {
+                    "id": "7",
+                    "text": "Uma escola tinha 25 livros na biblioteca, mas 9 foram emprestados. Quantos livros ainda estão na biblioteca?",
+                    "options": ["14", "15", "16"],
+                    "correctAnswer": "16"
+                },
+                "8": {
+                    "id": "8",
+                    "text": "Em um parque, havia 15 crianças brincando. Se 8 crianças foram embora, quantas crianças ainda estão brincando no parque?",
+                    "options": ["7", "8", "9"],
+                    "correctAnswer": "7"
+                },
+                "9": {
+                    "id": "9",
+                    "text": "Uma loja tinha 32 brinquedos na prateleira. Se 17 brinquedos foram vendidos, quantos brinquedos permanecem na prateleira?",
+                    "options": ["15", "16", "14"],
+                    "correctAnswer": "15"
+                },
+                "10": {
+                    "id": "10",
+                    "text": "Um fazendeiro tinha 20 galinhas. Ele vendeu 6 galinhas e depois perdeu 3. Quantas galinhas sobraram?",
+                    "options": ["6", "11", "19"],
+                    "correctAnswer": "11"
+                }
+            }
+        },
+        "multiplication": {
+            "easy": {
+                "1": {
+                    "id": "1",
+                    "text": "Uma bicicleta tem 2 rodas. Se você tiver 2 bicicletas, quantas rodas terá ao todo?",
+                    "options": ["2", "4", "8"],
+                    "correctAnswer": "4"
+                },
+                "2": {
+                    "id": "2",
+                    "text": "Um gato tem 4 patas. Quantas patas tem 3 gatos?",
+                    "options": ["7", "8", "12"],
+                    "correctAnswer": "12"
+                },
+                "3": {
+                    "id": "3",
+                    "text": "Uma caixa contém 5 fileiras de 4 livros cada. Quantos livros há no total?",
+                    "options": ["10", "20", "30"],
+                    "correctAnswer": "20"
+                },
+                "4": {
+                    "id": "4",
+                    "text": "Um cachorro tem 4 patas. Quantas patas têm 4 cachorros?",
+                    "options": ["16", "8", "4"],
+                    "correctAnswer": "16"
+                },
+                "5": {
+                    "id": "5",
+                    "text": "Cada flor tem 5 pétalas. Se há 3 flores, quantas pétalas há ao todo?",
+                    "options": ["15", "16", "17"],
+                    "correctAnswer": "15"
+                },
+                "6": {
+                    "id": "6",
+                    "text": "Em uma caixa, há 2 fileiras com 4 bolinhas em cada. Quantas bolinhas há no total?",
+                    "options": ["2", "4", "8"],
+                    "correctAnswer": "8"
+                },
+                "7": {
+                    "id": "7",
+                    "text": "Um jardim tem 6 canteiros, e cada canteiro tem 8 flores. Quantas flores há no total no jardim?",
+                    "options": ["46", "48", "58"],
+                    "correctAnswer": "48"
+                },
+                "8": {
+                    "id": "8",
+                    "text": "Uma caixa contém 7 pacotes de figurinhas, e cada pacote tem 9 figurinhas. Quantas figurinhas há no total?",
+                    "options": ["61", "62", "63"],
+                    "correctAnswer": "63"
+                },
+                "9": {
+                    "id": "9",
+                    "text": "Uma escola tem 5 salas de aula, e cada sala tem 12 alunos. Quantos alunos há ao todo na escola?",
+                    "options": ["30", "60", "120"],
+                    "correctAnswer": "60"
+                },
+                "10": {
+                    "id": "10",
+                    "text": "Um fazendeiro tem 8 cestas, e cada cesta contém 15 maçãs. Quantas maçãs há no total?",
+                    "options": ["120", "130", "140"],
+                    "correctAnswer": "120"
+                }
+            }
+        },
+        "division": {
+            "easy": {
+                "1": {
+                    "id": "1",
+                    "text": "Um bolo foi dividido em 4 pedaços iguais. Se 4 crianças vão comer o bolo, quantos pedaços cada uma receberá?",
+                    "options": ["0", "1", "2"],
+                    "correctAnswer": "1"
+                },
+                "2": {
+                    "id": "2",
+                    "text": "Você tem 6 balas para dividir igualmente entre 2 amigos. Quantas balas cada amigo receberá?",
+                    "options": ["3", "4", "5"],
+                    "correctAnswer": "3"
+                },
+                "3": {
+                    "id": "3",
+                    "text": "Uma turma de 15 alunos é dividida em 5 grupos. Quantos alunos há em cada grupo?",
+                    "options": ["5", "4", "3"],
+                    "correctAnswer": "3"
+                },
+                "4": {
+                    "id": "4",
+                    "text": "Há 10 brinquedos para dividir igualmente entre 5 crianças. Quantos brinquedos cada criança receberá?",
+                    "options": ["3", "2", "5"],
+                    "correctAnswer": "2"
+                },
+                "5": {
+                    "id": "5",
+                    "text": "36 livros são organizados igualmente em 9 prateleiras. Quantos livros há em cada prateleira?",
+                    "options": ["8", "2", "4"],
+                    "correctAnswer": "4"
+                },
+                "6": {
+                    "id": "6",
+                    "text": "Uma caixa tem 81 doces divididos igualmente entre 9 pacotes. Quantos doces há em cada pacote?",
+                    "options": ["9", "8", "10"],
+                    "correctAnswer": "9"
+                },
+                "7": {
+                    "id": "7",
+                    "text": "Você tem 24 bolinhas e quer dividir igualmente em 4 sacos. Quantas bolinhas há em cada saco?",
+                    "options": ["9", "6", "4"],
+                    "correctAnswer": "6"
+                },
+                "8": {
+                    "id": "8",
+                    "text": "Uma professora tem 30 lápis para distribuir igualmente entre 6 alunos. Quantos lápis cada aluno receberá?",
+                    "options": ["3", "6", "5"],
+                    "correctAnswer": "5"
+                },
+                "9": {
+                    "id": "9",
+                    "text": "Uma caixa contém 40 biscoitos e deve ser dividida igualmente em 8 sacos. Quantos biscoitos há em cada saco?",
+                    "options": ["5", "15", "10"],
+                    "correctAnswer": "5"
+                },
+                "10": {
+                    "id": "10",
+                    "text": "Há 56 canetas para dividir igualmente entre 7 estudantes. Quantas canetas cada estudante receberá?",
+                    "options": ["7", "8", "9"],
+                    "correctAnswer": "8"
+                }
             }
         }
     }
