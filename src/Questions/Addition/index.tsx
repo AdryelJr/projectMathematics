@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import ChooseLevel from "../ChooseLevel/1. index";
 import Quiz from "./3. Quiz";

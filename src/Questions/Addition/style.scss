@@ -80,6 +80,7 @@
 .container-quiz {
     width: 100%;
     height: 100%;
+    position: relative;
 
     .content-quiz {
         text-align: center;
@@ -107,8 +108,8 @@
             border: none;
             font-weight: 900;
             border-radius: 20px;
-            padding: .8em;
-            font-size: 1.2em;
+            padding: .65em;
+            font-size: 1.5em;
             transition: transform 0.2s;
             cursor: pointer;
 
@@ -143,6 +144,24 @@
             &.feedback-incorrect {
                 color: rgba(255, 0, 0, 0.884);
             }
+        }
+    }
+
+    .div-sair-do-game {
+        padding: 1em;
+        background-color: #fff;
+        border-radius: 18px;
+        position: absolute;
+        bottom: 0;
+        font-size: .9em;
+        cursor: pointer;
+        transition: transform 0.2s;
+        font-style: italic;
+        color: #1E1E1E;
+        box-shadow: 1px 1px 4px;
+
+        &:hover {
+            transform: scale(0.85);
         }
     }
 }

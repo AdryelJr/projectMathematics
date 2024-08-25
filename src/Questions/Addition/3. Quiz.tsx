@@ -2,6 +2,7 @@ import './style.scss';
 import React, { useState, useEffect } from 'react';
 import { ref, onValue } from "firebase/database";
 import { database } from '../../services/firebase';
+import { useNavigate } from 'react-router-dom';
 
 interface Question {
     id: string;
@@ -11,6 +12,7 @@ interface Question {
 }
 
 const Quiz: React.FC<{ level: string }> = ({ level }) => {
+    const navigate = useNavigate();
     const [questions, setQuestions] = useState<Question[]>([]);
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
     const [feedback, setFeedback] = useState<string | null>(null);
@@ -66,6 +68,10 @@ const Quiz: React.FC<{ level: string }> = ({ level }) => {
         }, 3000);
     };
 
+    function handleHome() {
+        navigate('/')
+    }
+
     return (
         <div className='container-quiz'>
             {questions.length > 0 && (
@@ -86,6 +92,8 @@ const Quiz: React.FC<{ level: string }> = ({ level }) => {
                     {feedback && <p className={`div-feedback ${feedbackClass}`}>{feedback}</p>}
                 </div>
             )}
+
+            <div className='div-sair-do-game' onClick={handleHome}>VOLTAR AO INÍCIO</div>
         </div>
     );
 };
