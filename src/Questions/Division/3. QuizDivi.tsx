@@ -23,7 +23,7 @@ export const QuizDivi: React.FC<{ level: string; operation: string }> = ({ level
     const [correctAnswers, setCorrectAnswers] = useState<number>(0);
     const [isQuizCompleted, setIsQuizCompleted] = useState<boolean>(false);
     const [totalQuestions, setTotalQuestions] = useState<number>(0);
-   
+
     useEffect(() => {
         const fetchQuestions = async () => {
             const questionsRef = ref(database, `questions/${operation}/${level}`);
