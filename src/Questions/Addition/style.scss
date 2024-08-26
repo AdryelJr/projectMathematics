@@ -54,10 +54,15 @@
     }
 }
 
-@media (min-width: 1400px) {
+@media (width <=1200px) {
     .container-story {
-        p {
+        h1 {
+            margin-bottom: .5em;
             font-size: 2em;
+        }
+
+        p {
+            font-size: 1.5em !important;
             color: #fff;
             font-weight: 300;
             line-height: 1.7;
@@ -67,12 +72,76 @@
             padding: 0 50px;
 
             button {
-                padding: .5em !important;
+                padding: .4em !important;
             }
         }
     }
 }
 
+@media (width <=1400px) {
+    .container-story {
+        h1 {
+            font-size: 1.8em;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #fff;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .div-btn {
+            padding: 0 50px;
+
+            button {
+                padding: .2em !important;
+            }
+        }
+    }
+}
+
+@media (width > 1400px) {
+    .container-story {
+        h1 {
+            margin-bottom: .5em;
+            font-size: 2.8em;
+        }
+
+        p {
+            font-size: 1.8em;
+        }
+
+        .div-btn {
+            padding: 0 50px;
+
+            button {
+                padding: .4em !important;
+            }
+        }
+    }
+}
+
+@media (width > 1600px) {
+    .container-story {
+        h1 {
+            font-size: 3em;
+        }
+
+        p {
+            font-size: 2.3em;
+            line-height: 1.5;
+        }
+
+        .div-btn {
+            padding: 0 50px;
+
+            button {
+                padding: .6em !important;
+            }
+        }
+    }
+}
 
 // -----------------------------------------------------------------------------
 
@@ -159,6 +228,48 @@
         font-style: italic;
         color: #1E1E1E;
         box-shadow: 1px 1px 4px;
+
+        &:hover {
+            transform: scale(0.85);
+        }
+    }
+}
+
+
+
+// PROGRESSE / MENSAGEM FINAL --------------------------------------------------
+
+.completion-screen {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        color: #fff;
+        font-size: 3em;
+        font-weight: 900;
+        margin-bottom: 1em;
+    }
+
+    p {
+        color: #fff;
+        font-size: 1.5em;
+        margin-bottom: .5em;
+    }
+
+    button {
+        margin-top: 3em;
+        padding: 1.5em;
+        background-color: #fff;
+        border-radius: 18px;
+        border: none;
+        box-shadow: 1px 1px 2px;
+        font-size: 20px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: transform 0.2s;
 
         &:hover {
             transform: scale(0.85);

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ChooseLevel from "../ChooseLevel/1. index";
-import Quiz from "./3. Quiz";
+import ChooseLevel from "../_ChooseLevel/1. index";
 import Story from "./2. StoryAdd";
+import { Quiz } from "./3. Quiz";
 
 export const Addition: React.FC = () => {
     const [level, setLevel] = useState<string | null>(null);
@@ -22,8 +22,7 @@ export const Addition: React.FC = () => {
         <div className="content-addtion">
             {!level && <ChooseLevel onLevelSelect={handleLevelSelect} />}
             {showStory && <Story onAdvance={handleStoryAdvance} />}
-            {showQuiz && level && <Quiz level={level} />}
+            {showQuiz && level && <Quiz level={level} operation="addition" />}
         </div>
     );
 };
-

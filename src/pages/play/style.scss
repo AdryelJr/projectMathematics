@@ -3,7 +3,6 @@
         color: #fff;
         font-weight: 900;
         font-size: 3em;
-        margin-bottom: 1em;
     }
 
     ul {
@@ -16,7 +15,6 @@
             box-shadow: 1px 1px 4px;
             border-radius: 25px;
             width: 80%;
-            height: 1.8em;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -24,7 +22,7 @@
             margin-bottom: 0.8em;
             background-color: #fff;
             color: #1E1E1E;
-            font-size: 2em;
+            font-size: 1.8em;
             font-weight: 900;
             transition: transform 0.2s;
 
@@ -33,11 +31,21 @@
             }
         }
 
-        .blocked{
-            color: #1e1e1e80;
-            cursor: not-allowed;
-        }
+        .blocked {
+            position: relative;
+            pointer-events: none;
+            color: #1e1e1e88;
 
+            &:after {
+                content: url('../../assets/svg/padLock.svg');
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 30px;
+                height: 30px;
+            }
+        }
     }
 }
 

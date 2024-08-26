@@ -73,11 +73,6 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
             setUser(newUser);
             localStorage.setItem('user', JSON.stringify(newUser));
 
-            const userInfoGame = {
-                coins: 5,
-                xp: 0,
-            }
-            // Adiciona o usuário ao Realtime Database com 5 moedas grátis se não existir
             const db = getDatabase();
             const userRef = ref(db, 'users/' + uid);
             const snapshot = await get(userRef);
@@ -86,7 +81,28 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                     name: displayName,
                     avatar: photoURL,
                     email: email,
-                    userInfoGame
+                    progress: {
+                        addition: {
+                            facil: false,
+                            dificil: false,
+                            concluido: false
+                        },
+                        subtraction: {
+                            facil: false,
+                            dificil: false,
+                            concluido: false
+                        },
+                        multiplication: {
+                            facil: false,
+                            dificil: false,
+                            concluido: false
+                        },
+                        division: {
+                            facil: false,
+                            dificil: false,
+                            concluido: false
+                        }
+                    }
                 });
             }
 
@@ -110,18 +126,34 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                 setUser(newUser);
                 localStorage.setItem('user', JSON.stringify(newUser));
 
-                const userInfoGame = {
-                    coins: 5,
-                    xp: 0,
-                };
-
                 const db = getDatabase();
                 const userRef = ref(db, 'users/' + uid);
                 await set(userRef, {
                     name: displayName,
                     avatar: photoURL || '',
                     email: email,
-                    userInfoGame
+                    progress: {
+                        addition: {
+                            facil: false,
+                            dificil: false,
+                            concluido: false
+                        },
+                        subtraction: {
+                            facil: false,
+                            dificil: false,
+                            concluido: false
+                        },
+                        multiplication: {
+                            facil: false,
+                            dificil: false,
+                            concluido: false
+                        },
+                        division: {
+                            facil: false,
+                            dificil: false,
+                            concluido: false
+                        }
+                    }
                 });
 
                 navigate('/');
@@ -174,18 +206,18 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
             await updateProfile(currentUser, {
                 displayName: displayNameInput
             });
-    
+
             setUser(prevUser => {
                 if (prevUser) {
                     const updatedUser = { ...prevUser, name: displayNameInput };
                     localStorage.setItem('user', JSON.stringify(updatedUser));
                     return updatedUser;
                 }
-                return prevUser; 
+                return prevUser;
             });
         }
     };
-    
+
 
     return (
         <AuthContext.Provider value={{ user, signInWithGoogle, signUpWithEmailAndPassword, signInUserWithEmailAndPassword, deslogar, updateName }}>
