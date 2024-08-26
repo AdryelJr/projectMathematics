@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ChooseLevel from "../_ChooseLevel/1. index";
 import StoryMulti from "./2. StoryMulti";
-import QuizMulti from "./3. QuizMulti";
+import { QuizMulti } from "./3. QuizMulti";
 
 
 export const Multiplication: React.FC = () => {
@@ -23,7 +23,7 @@ export const Multiplication: React.FC = () => {
         <div className="content-addtion">
             {!level && <ChooseLevel onLevelSelect={handleLevelSelect} />}
             {showStory && <StoryMulti onAdvance={handleStoryAdvance} />}
-            {showQuiz && level && <QuizMulti level={level} />}
+            {showQuiz && level && <QuizMulti level={level} operation="multiplication"/>}
         </div>
     );
 };

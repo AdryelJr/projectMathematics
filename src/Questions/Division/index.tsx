@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ChooseLevel from "../_ChooseLevel/1. index";
 import StoryDivi from "./2. StoryDivi";
-import QuizDivi from "./3. QuizDivi";
+import { QuizDivi } from "./3. QuizDivi";
 
 
 export const Division: React.FC = () => {
@@ -23,7 +23,7 @@ export const Division: React.FC = () => {
         <div className="content-addtion">
             {!level && <ChooseLevel onLevelSelect={handleLevelSelect} />}
             {showStory && <StoryDivi onAdvance={handleStoryAdvance} />}
-            {showQuiz && level && <QuizDivi level={level} />}
+            {showQuiz && level && <QuizDivi level={level} operation="division" />}
         </div>
     );
 };
