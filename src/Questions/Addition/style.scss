@@ -26,11 +26,12 @@
 
     .div-btn {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         padding: 0 20px;
         position: absolute;
         bottom: 0;
         width: 100%;
+        gap: 4em;
 
         .btn1,
         .btn2 {
@@ -38,7 +39,7 @@
             background-color: #fff;
             font-weight: 300;
             cursor: pointer;
-            padding: .2em;
+            padding: .25em;
             width: 40%;
             border-radius: 20px;
             border: none;
@@ -106,9 +107,17 @@
 }
 
 @keyframes bounce {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0); }
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 600px) {
@@ -230,6 +239,33 @@
     }
 }
 
+@media (max-width: 800px) {
+    .content-quiz {
+
+        button {
+            width: 55% !important;
+            padding: .60em !important;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .content-quiz {
+        h1{
+            font-size: 1.5em !important;
+            margin-bottom: .5em !important;
+        }
+
+        p{
+            font-size: 1.2em !important;
+        }
+
+        button {
+            width: 70% !important;
+            padding: .45em !important;
+        }
+    }
+}
 // PROGRESSE / MENSAGEM FINAL --------------------------------------------------
 
 .completion-screen {
@@ -263,7 +299,7 @@
         border: none;
         box-shadow: 1px 1px 2px;
         font-size: 20px;
-        font-weight: 800;
+        font-weight: 700;
         cursor: pointer;
         transition: transform 0.2s;
 
@@ -273,47 +309,20 @@
     }
 
     @media (max-width: 1200px) {
-        h1 {
-            font-size: 2.5em;
-        }
-
-        p {
-            font-size: 1.2em;
-        }
-
         button {
             font-size: 18px;
             padding: 1em;
         }
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 400px) {
         h1 {
             font-size: 2em;
         }
 
-        p {
-            font-size: 1em;
-        }
-
-        button {
-            font-size: 16px;
-            padding: 0.8em;
-        }
-    }
-
-    @media (max-width: 400px) {
-        h1 {
-            font-size: 1.5em;
-        }
-
-        p {
-            font-size: 0.9em;
-        }
-
         button {
             font-size: 14px;
-            padding: 0.6em;
+            padding: 1em;
         }
     }
 }
