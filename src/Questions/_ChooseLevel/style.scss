@@ -21,7 +21,7 @@
         padding: 0.8em;
         width: 80%;
         max-width: 400px; // Limite máximo para o botão
-        border-radius: 20px;
+        border-radius: 18px;
         border: none;
         box-shadow: 1px 1px 4px;
         margin-bottom: 1em;
@@ -43,6 +43,7 @@
         }
 
         button {
+            margin-bottom: 1.5em;
             padding: 1em;
             font-size: 1.2em;
             width: 90%; // Ocupa mais espaço em telas menores
@@ -54,12 +55,12 @@
 @media (max-width: 480px) {
     .container-chooseLevel {
         h2 {
-            font-size: 1.8em;
+            font-size: 1.7em;
             margin-bottom: 1em;
         }
 
         button {
-            padding: 0.7em;
+            padding: 1em;
             font-size: 1em;
             width: 100%; // Ocupa todo o espaço disponível
         }

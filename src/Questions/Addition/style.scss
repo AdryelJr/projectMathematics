@@ -41,7 +41,7 @@
             cursor: pointer;
             padding: .25em;
             width: 40%;
-            border-radius: 20px;
+            border-radius: 18px;
             border: none;
             box-shadow: 1px 1px 4px;
             font-size: 2em;
@@ -124,7 +124,12 @@
     .container-story {
         padding: .5em;
 
+        h1{
+            font-size: 1.6em;
+        }
+
         p {
+            font-size: 1.2em !important;
             max-height: 80%;
             overflow: scroll;
             animation: bounce 2s ease-out;
