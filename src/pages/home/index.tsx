@@ -5,6 +5,7 @@ import { useNavigate, useLocation, Link, Outlet } from 'react-router-dom';
 
 export function Home() {
     const [isVisible, setIsVisible] = useState(true);
+    const [menuOpen, setMenuOpen] = useState(false); // Estado para controlar o menu
     const { user, deslogar } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -28,14 +29,20 @@ export function Home() {
     function sair() {
         deslogar();
     }
+    
     const isActive = (path: string) => {
         return location.pathname === path;
     };
 
     return (
         <div className={`main-container ${isVisible ? 'fade-in' : 'fade-out'}`}>
+            {/* Ícone do menu hambúrguer */}
+            <div className="hamburger-menu" onClick={() => setMenuOpen(!menuOpen)}>
+                ☰
+            </div>
 
-            <div className='div-opcoes'>
+            {/* Menu de opções */}
+            <div className={`div-opcoes ${menuOpen ? 'open' : ''}`}>
                 <Link to='/' className={isActive('/') || isActive('/addition') || isActive('/subtraction') || isActive('/multiplication') || isActive('/division') ? 'active' : ''}>JOGAR</Link>
                 <Link to='/profile' className={isActive('/profile') ? 'active' : ''}>PERFIL</Link>
                 <button onClick={sair}>SAIR</button>
