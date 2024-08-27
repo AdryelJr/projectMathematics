@@ -107,21 +107,19 @@
 
 @media (max-width: 480px) {
     .content-login {
-        padding: 10px 5px 20px 5px;
+        padding: 0 !important;
 
         h1 {
+            margin-top: -3em;
             font-size: 1.5em;
-            /* Reduz o tamanho do texto ainda mais */
         }
 
         .form {
             width: 90%;
-            /* Aumenta a largura do formulário para ocupar mais espaço */
         }
 
         .link-register {
             font-size: smaller;
-            /* Ajusta o tamanho da fonte */
         }
     }
 }
