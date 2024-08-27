@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
 
     .content-logo {
         height: 100vh;
@@ -16,6 +17,8 @@
 
         img {
             width: 50em;
+            max-width: 100%;
+            /* Garante que a imagem não ultrapasse o container */
         }
     }
 
@@ -66,6 +69,59 @@
                 text-decoration: none;
                 color: #fff;
             }
+        }
+    }
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 970px) {
+    .container-login {
+        flex-direction: column;
+    }
+
+    .content-logo {
+        width: 40% !important;
+        height: 30vh !important;
+
+        img {
+            width: 100%;
+            max-width: 30em;
+        }
+    }
+
+    .content-login {
+        width: 100% !important;
+        height: auto;
+        padding: 20px 10px 30px 10px;
+
+        h1 {
+            font-size: 1.8em;
+        }
+
+        .form {
+            width: 80% !important;
+            height: auto;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .content-login {
+        padding: 10px 5px 20px 5px;
+
+        h1 {
+            font-size: 1.5em;
+            /* Reduz o tamanho do texto ainda mais */
+        }
+
+        .form {
+            width: 90%;
+            /* Aumenta a largura do formulário para ocupar mais espaço */
+        }
+
+        .link-register {
+            font-size: smaller;
+            /* Ajusta o tamanho da fonte */
         }
     }
 }
