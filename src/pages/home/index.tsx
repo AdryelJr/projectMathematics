@@ -29,7 +29,12 @@ export function Home() {
     function sair() {
         deslogar();
     }
-    
+
+    // Função que fecha o menu ao clicar em um link
+    const handleLinkClick = () => {
+        setMenuOpen(false);
+    };
+
     const isActive = (path: string) => {
         return location.pathname === path;
     };
@@ -43,9 +48,9 @@ export function Home() {
 
             {/* Menu de opções */}
             <div className={`div-opcoes ${menuOpen ? 'open' : ''}`}>
-                <Link to='/' className={isActive('/') || isActive('/addition') || isActive('/subtraction') || isActive('/multiplication') || isActive('/division') ? 'active' : ''}>JOGAR</Link>
-                <Link to='/profile' className={isActive('/profile') ? 'active' : ''}>PERFIL</Link>
-                <button onClick={sair}>SAIR</button>
+                <Link to='/' className={isActive('/') || isActive('/addition') || isActive('/subtraction') || isActive('/multiplication') || isActive('/division') ? 'active' : ''} onClick={handleLinkClick}>JOGAR</Link>
+                <Link to='/profile' className={isActive('/profile') ? 'active' : ''} onClick={handleLinkClick}>PERFIL</Link>
+                <button onClick={() => { sair(); handleLinkClick(); }}>SAIR</button>
             </div>
 
             <div className='div-content'>
