@@ -73,15 +73,14 @@
     }
 }
 
-/* Responsividade para telas menores */
 @media (max-width: 970px) {
     .container-login {
         flex-direction: column;
     }
 
     .content-logo {
-        width: 40% !important;
-        height: 30vh !important;
+        width: 50% !important;
+        height: 20vh !important;
 
         img {
             width: 100%;
