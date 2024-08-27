@@ -96,6 +96,11 @@
         .div-content {
             width: 100%; // Ajusta a largura do conteúdo
             padding-top: 60px; // Espaço para o menu hambúrguer
+
+            main {
+                margin-top: -5em;
+                height: 70% !important;
+            }
         }
     }
 }
