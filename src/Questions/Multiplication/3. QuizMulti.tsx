@@ -90,63 +90,36 @@ export const QuizMulti: React.FC<{ level: string; operation: string }> = ({ leve
         }, 3000);
     };
 
+    const updateProgress = async (phaseCompleted: 'facil' | 'dificil') => {
+        if (!user) return;
+
+        const userRef = ref(database, `users/${user.id}/progress/${operation}`);
+        const snapshot = await get(userRef);
+        const progress = snapshot.val() || {};
+
+        if (phaseCompleted === 'facil') {
+            await update(userRef, {
+                facil: true,
+                concluido: progress.dificil || false
+            });
+        } else if (phaseCompleted === 'dificil') {
+            await update(userRef, {
+                facil: true,
+                dificil: true,
+            });
+        }
+    };
+
+    const handleQuizCompletion = async () => {
+        setIsQuizCompleted(true);
+
+        const phaseCompleted = determineLevelCompleted();
+        await updateProgress(phaseCompleted);
+    };
+
     const determineLevelCompleted = (): 'facil' | 'dificil' => {
         const normalizedLevel = level.trim().toLowerCase();
         return normalizedLevel === 'hard' ? 'dificil' : 'facil';
-    };
-
-
-    const handleQuizCompletion = async () => {
-        if (user) {
-            const levelCompleted = determineLevelCompleted();
-            await updateUserProgress(user.id, operation, levelCompleted);
-        }
-
-        setIsQuizCompleted(true);
-        setTotalQuestions(questions.length);
-    };
-
-    const updateUserProgress = async (userId: string, operation: string, levelCompleted: 'facil' | 'dificil') => {
-        const userProgressRef = ref(database, `users/${userId}/progress/${operation}`);
-        const snapshot = await get(userProgressRef);
-        const progress = snapshot.val();
-        console.log('Current Progress:', progress);
-
-        await update(userProgressRef, {
-            [levelCompleted]: true
-        });
-
-        const updatedSnapshot = await get(userProgressRef);
-        const updatedProgress = updatedSnapshot.val();
-        console.log('Updated Progress:', updatedProgress);
-
-        const bothLevelsCompleted = updatedProgress.facil && updatedProgress.dificil;
-        console.log('Both Levels Completed:', bothLevelsCompleted);
-
-        if (bothLevelsCompleted) {
-            await update(userProgressRef, {
-                concluido: true
-            });
-
-            const nextOperation = getNextOperation(operation);
-            console.log('Next Operation:', nextOperation);
-
-            if (nextOperation) {
-                await update(ref(database, `users/${userId}/progress/${nextOperation}`), {
-                    facil: false,
-                    dificil: false,
-                    concluido: false
-                });
-                console.log('Next Operation Initialized:', nextOperation);
-            }
-        }
-    };
-
-
-    const getNextOperation = (currentOperation: string): string | null => {
-        const operations = ['addition', 'subtraction', 'multiplication', 'division'];
-        const currentIndex = operations.indexOf(currentOperation);
-        return currentIndex < operations.length - 1 ? operations[currentIndex + 1] : null;
     };
 
     return (

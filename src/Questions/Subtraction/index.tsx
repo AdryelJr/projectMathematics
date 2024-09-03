@@ -20,7 +20,7 @@ export const Subtraction: React.FC = () => {
 
     return (
         <div className="content-addtion">
-            {!level && <ChooseLevel onLevelSelect={handleLevelSelect} />}
+            {!level && <ChooseLevel operacao="subtraction" onLevelSelect={handleLevelSelect} />}
             {showStory && level && <StorySub level={level} onAdvance={handleStoryAdvance} />}
             {showQuiz && level && <QuizSub level={level} operation="subtraction" />}
         </div>

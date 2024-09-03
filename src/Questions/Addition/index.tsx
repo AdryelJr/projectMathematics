@@ -20,7 +20,7 @@ export const Addition: React.FC = () => {
 
     return (
         <div className="content-addtion">
-            {!level && <ChooseLevel onLevelSelect={handleLevelSelect} />}
+            {!level && <ChooseLevel onLevelSelect={handleLevelSelect} operacao="addition"/>}
             {showStory && level && <Story level={level} onAdvance={handleStoryAdvance} />}
             {showQuiz && level && <Quiz level={level} operation="addition" />}
         </div>

@@ -66,3 +66,20 @@
         }
     }
 }
+
+.blocked {
+    position: relative;
+    pointer-events: none;
+    color: #1e1e1e88;
+    background-color: red;
+
+    &:after {
+        content: url('../../assets/svg/padLock.svg');
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 30px;
+        height: 30px;
+    }
+}
