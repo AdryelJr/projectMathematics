@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ChooseLevel from "../_ChooseLevel/1. index";
-import StoryDivi from "../Division/2. StoryDivi";
 import { QuizSub } from "./3. QuizSub";
+import StorySub from "./2.StorySub";
 
 export const Subtraction: React.FC = () => {
     const [level, setLevel] = useState<string | null>(null);
@@ -21,8 +21,8 @@ export const Subtraction: React.FC = () => {
     return (
         <div className="content-addtion">
             {!level && <ChooseLevel onLevelSelect={handleLevelSelect} />}
-            {showStory && <StoryDivi onAdvance={handleStoryAdvance} />}
-            {showQuiz && level && <QuizSub level={level} operation="subtraction"/>}
+            {showStory && level && <StorySub level={level} onAdvance={handleStoryAdvance} />}
+            {showQuiz && level && <QuizSub level={level} operation="subtraction" />}
         </div>
     );
 };

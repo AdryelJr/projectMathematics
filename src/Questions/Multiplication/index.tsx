@@ -22,7 +22,7 @@ export const Multiplication: React.FC = () => {
     return (
         <div className="content-addtion">
             {!level && <ChooseLevel onLevelSelect={handleLevelSelect} />}
-            {showStory && <StoryMulti onAdvance={handleStoryAdvance} />}
+            {showStory && level && <StoryMulti level={level} onAdvance={handleStoryAdvance} />}
             {showQuiz && level && <QuizMulti level={level} operation="multiplication"/>}
         </div>
     );

@@ -95,7 +95,6 @@ export const QuizDivi: React.FC<{ level: string; operation: string }> = ({ level
         return normalizedLevel === 'hard' ? 'dificil' : 'facil';
     };
 
-
     const handleQuizCompletion = async () => {
         if (user) {
             const levelCompleted = determineLevelCompleted();
@@ -142,17 +141,44 @@ export const QuizDivi: React.FC<{ level: string; operation: string }> = ({ level
         }
     };
 
-
     const getNextOperation = (currentOperation: string): string | null => {
         const operations = ['addition', 'subtraction', 'multiplication', 'division'];
         const currentIndex = operations.indexOf(currentOperation);
         return currentIndex < operations.length - 1 ? operations[currentIndex + 1] : null;
     };
 
+    // Definição do desfecho da história
+    const storyEnding = level === 'easy' ? (
+        <>
+            <h2>Desfecho</h2>
+            <p>
+                Com todos os Numéricos reunidos, a Vila dos Números Perdidos renasce em alegria.
+                Os habitantes, em agradecimento, organizam um belo festival, onde os números brilham no céu
+                como constelações, celebrando a união e o poder do conhecimento.<br /><br />
+                Você é recebido com gratidão, sabendo que sua coragem e inteligência trouxeram
+                a vila de volta à vida. Com a luz dos números iluminando o céu, a paz e a harmonia
+                retornam à vila, e todos comemoram o fim dessa jornada mágica. Fim.
+            </p>
+        </>
+    ) : (
+        <p>
+            Com todos os desafios superados e a energia mágica restaurada, a Torre dos Números
+            brilha com uma luz intensa, iluminando todo o reino. O caos é evitado,
+            e o equilíbrio numérico retorna, trazendo paz e estabilidade. O reino celebra sua bravura
+            e inteligência, e a torre, agora cheia de vida, se torna um farol de conhecimento e sabedoria.<br /><br />
+            Você, o herói que restaurou a ordem, é lembrado para sempre como o Guardião da Torre,
+            e o reino dos números floresce, seguro na certeza de que, sempre que precisar,
+            você estará lá para proteger o equilíbrio. Fim.
+        </p>
+    );
+
     return (
         <div className='container-quiz'>
             {isQuizCompleted ? (
                 <div className='completion-screen'>
+                    <div className='div-history'>
+                        {storyEnding}
+                    </div>
                     <h1>Parabéns!</h1>
                     <p>{`Operação de nível ${level === 'easy' ? 'Fácil' : 'Difícil'} concluído`}</p>
                     <p>{`${correctAnswers} acertos de ${totalQuestions} perguntas`}</p>

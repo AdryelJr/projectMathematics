@@ -2,6 +2,7 @@
     height: 100vh;
     display: flex;
     position: relative;
+    overflow: hidden;
 
     .hamburger-menu {
         font-weight: 900;
@@ -59,13 +60,63 @@
             width: 95%;
             height: 85%;
             border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+
+            .math-background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 10;
+            }
+
+            .math-equation {
+                position: absolute;
+                font-size: 2em;
+                color: rgba(255, 255, 255, 0.288);
+                white-space: nowrap;
+                transform: translate(-50%, -50%);
+            }
+
+            // Animações para diferentes comportamentos
+            .animation-0 {
+                animation: floatAndRotate 15s infinite linear;
+            }
+
+            .animation-1 {
+                animation: moveXSlow 20s infinite linear, floatAndRotate 30s infinite linear;
+            }
+
+            .animation-2 {
+                animation: moveYFast 10s infinite linear, floatAndRotate 25s infinite linear;
+            }
+
+            // Animação para girar e mover aleatoriamente
+            @keyframes floatAndRotate {
+                0% { transform: translate(0, 0) rotate(0deg); }
+                50% { transform: translate(10px, 10px) rotate(180deg); }
+                100% { transform: translate(0, 0) rotate(360deg); }
+            }
+
+            // Movimentos de translação em diferentes direções e velocidades
+            @keyframes moveXSlow {
+                0% { left: -20%; }
+                100% { left: 120%; }
+            }
+
+            @keyframes moveYFast {
+                0% { top: -20%; }
+                100% { top: 120%; }
+            }
         }
     }
 
-    // Responsividade
     @media (max-width: 768px) {
         .hamburger-menu {
-            display: block; // Exibe o menu em telas pequenas
+            display: block;
         }
 
         .div-opcoes {
@@ -82,7 +133,7 @@
             z-index: 999;
 
             &.open {
-                transform: translateX(0); // Mostra o menu quando estiver aberto
+                transform: translateX(0);
             }
 
             a,
@@ -94,8 +145,8 @@
         }
 
         .div-content {
-            width: 100%; // Ajusta a largura do conteúdo
-            padding-top: 60px; // Espaço para o menu hambúrguer
+            width: 100%;
+            padding-top: 60px;
 
             main {
                 border-radius: 0 50px 50px 0;

@@ -23,7 +23,7 @@ export const QuizMulti: React.FC<{ level: string; operation: string }> = ({ leve
     const [correctAnswers, setCorrectAnswers] = useState<number>(0);
     const [isQuizCompleted, setIsQuizCompleted] = useState<boolean>(false);
     const [totalQuestions, setTotalQuestions] = useState<number>(0);
-   
+
     useEffect(() => {
         const fetchQuestions = async () => {
             const questionsRef = ref(database, `questions/${operation}/${level}`);
@@ -153,9 +153,10 @@ export const QuizMulti: React.FC<{ level: string; operation: string }> = ({ leve
         <div className='container-quiz'>
             {isQuizCompleted ? (
                 <div className='completion-screen'>
+                    <p>Continue para ver o desfecho da história...</p> <br /><br />
                     <h1>Parabéns!</h1>
-                    <p>{`Operação de nível ${level === 'easy' ? 'Fácil' : 'Difícil'} concluído`}</p>
-                    <p>{`${correctAnswers} acertos de ${totalQuestions} perguntas`}</p>
+                    <p>{`Você completou a operação de nível ${level === 'easy' ? 'Fácil' : 'Difícil'}!`}</p>
+                    <p>{`Você acertou ${correctAnswers} de ${totalQuestions} perguntas.`}</p>
                     <button onClick={() => navigate('/')}>VOLTAR À TELA INICIAL</button>
                 </div>
             ) : (

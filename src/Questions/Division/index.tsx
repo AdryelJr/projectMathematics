@@ -22,7 +22,7 @@ export const Division: React.FC = () => {
     return (
         <div className="content-addtion">
             {!level && <ChooseLevel onLevelSelect={handleLevelSelect} />}
-            {showStory && <StoryDivi onAdvance={handleStoryAdvance} />}
+            {showStory && level && <StoryDivi level={level} onAdvance={handleStoryAdvance} />}
             {showQuiz && level && <QuizDivi level={level} operation="division" />}
         </div>
     );

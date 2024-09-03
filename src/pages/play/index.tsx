@@ -6,7 +6,7 @@ import { useAuth } from '../../hooks/useAuth';
 
 export function Play() {
     const { user } = useAuth();
-    const [unlockedOperations, setUnlockedOperations] = useState<string[]>([]);
+    const [unlockedOperations, setUnlockedOperations] = useState<{[key: string]: boolean}>({});
 
     useEffect(() => {
         const fetchUserProgress = async () => {
@@ -17,19 +17,31 @@ export function Play() {
 
                 if (snapshot.exists()) {
                     const progress = snapshot.val();
-                    const unlocked: string[] = [];
+                    const unlocked: {[key: string]: boolean} = {};
 
-                    const operations = ['addition', 'subtraction', 'multiplication', 'division'];
-                    for (const op of operations) {
-                        if (op === 'addition') {
-                            unlocked.push(op);
-                        } else {
-                            const previousOperation = operations[operations.indexOf(op) - 1];
-                            if (progress[previousOperation]?.concluido) {
-                                unlocked.push(op);
-                            }
-                        }
+                    // Lógica de desbloqueio das fases e operações
+                    if (progress.addition?.facil) {
+                        unlocked.subtraction = true; // Libera fase fácil da subtração
                     }
+                    if (progress.addition?.dificil) {
+                        unlocked.subtraction = true; // Libera fase fácil da subtração
+                        unlocked.subtractionHard = true; // Libera fase difícil da subtração
+                    }
+                    if (progress.subtraction?.facil) {
+                        unlocked.multiplication = true; // Libera fase fácil da multiplicação
+                    }
+                    if (progress.subtraction?.dificil) {
+                        unlocked.multiplication = true; // Libera fase fácil da multiplicação
+                        unlocked.multiplicationHard = true; // Libera fase difícil da multiplicação
+                    }
+                    if (progress.multiplication?.facil) {
+                        unlocked.division = true; // Libera fase fácil da divisão
+                    }
+                    if (progress.multiplication?.dificil) {
+                        unlocked.division = true; // Libera fase fácil da divisão
+                        unlocked.divisionHard = true; // Libera fase difícil da divisão
+                    }
+
                     setUnlockedOperations(unlocked);
                 }
             }
@@ -37,17 +49,18 @@ export function Play() {
         fetchUserProgress();
     }, [user]);
 
-
-    const isUnlocked = (operation: string) => unlockedOperations.includes(operation);
+    const isUnlocked = (operation: string, difficulty: 'easy' | 'hard') => {
+        return unlockedOperations[`${operation}${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}`] || (difficulty === 'easy' && unlockedOperations[operation]);
+    };
 
     return (
         <div className='container-play'>
             <h1>ESCOLHA A OPERAÇÃO</h1>
             <ul>
                 <Link to="addition">ADIÇÃO</Link>
-                <Link to="subtraction" className={isUnlocked('subtraction') ? '' : 'blocked'}>SUBTRAÇÃO</Link>
-                <Link to="multiplication" className={isUnlocked('multiplication') ? '' : 'blocked'}>MULTIPLICAÇÃO</Link>
-                <Link to="division" className={isUnlocked('division') ? '' : 'blocked'}>DIVISÃO</Link>
+                <Link to="subtraction" className={isUnlocked('subtraction', 'easy') ? '' : 'blocked'}>SUBTRAÇÃO</Link>
+                <Link to="multiplication" className={isUnlocked('multiplication', 'easy') ? '' : 'blocked'}>MULTIPLICAÇÃO</Link>
+                <Link to="division" className={isUnlocked('division', 'easy') ? '' : 'blocked'}>DIVISÃO</Link>
             </ul>
         </div>
     );
