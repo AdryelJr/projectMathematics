@@ -1,0 +1,165 @@
+.container-profile {
+    width: 100%;
+    display: flex;
+    transition: all .2s ease-in-out;
+    flex-direction: column; // Mudança para responsividade em telas pequenas
+
+    .profile {
+        margin-left: 0; // Ajuste para responsividade
+        flex-direction: column;
+        display: flex;
+        width: 35%; // Ajuste para responsividade
+        align-items: center;
+
+        img {
+            width: 40%;
+            border-radius: 999px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid #333;
+        }
+
+        button {
+            margin: .5em 0 3em 0;
+            padding: .7em 1.5em;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 1px 1px 2px #333333cb;
+            background-color: #fff;
+            cursor: pointer;
+            color: #000;
+            font-weight: bold;
+
+            &:hover {
+                background-color: #e0e0e0;
+            }
+        }
+
+        .info-profile {
+            p {
+                font-weight: bold;
+                margin-bottom: 1em;
+                color: #fff;
+                font-size: 1.2em;
+            }
+        }
+    }
+
+    // .conquistas {
+    //     // ainda vou me decidir oq vou fazer
+    // }
+
+    .modal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.501);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .modal-content {
+            border-radius: 10px;
+            padding: 1em;
+            background-color: #fff;
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+
+            .div-img-profile {
+                text-align: center;
+
+                img {
+                    width: 10em;
+                    height: 10em;
+                    cursor: pointer;
+                    border-radius: 999px;
+                    border: 1px solid #333;
+                    margin: .5em;
+                    transition: all 0.1s ease-in-out;
+
+                    &.selected {
+                        border: 4px solid #9176FF; // Borda para a imagem selecionada
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); // Efeito de sombra na imagem selecionada
+                    }
+                }
+            }
+
+            button {
+                margin: 1em;
+                padding: 1.1em 3em;
+                border-radius: 5px;
+                border: none;
+                box-shadow: 1px 1px 2px #333333cb;
+                background-color: #9176FF;
+                cursor: pointer;
+                color: #fff;
+                font-weight: bold;
+
+                &:hover {
+                    background-color: #6646e7;
+                }
+            }
+
+            .btn-close {
+                color: #000;
+                padding: 0;
+                background-color: transparent;
+                position: absolute;
+                right: -18px;
+                top: -20px;
+                box-shadow: none;
+                font-size: 2em;
+
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .container-profile {
+        flex-direction: row; // Alinhamento em telas maiores
+    }
+
+    .profile {
+        width: 35%; // Alinhamento para telas maiores
+        margin-left: -1em;
+    }
+
+    .modal-content {
+        max-width: 500px; // Mantém o tamanho máximo do modal em telas maiores
+    }
+}
+
+@media (max-width: 767px) {
+    .profile {
+        width: 100% !important;
+
+        button{
+            margin: .5em 0 1.5em 0 !important;
+        }
+    }
+
+    .profile img {
+        width: 40% !important; // Aumenta a imagem do perfil em telas menores
+    }
+
+    .profile .info-profile p {
+        font-size: 1em; // Ajuste de fonte para telas menores
+    }
+
+    .modal-content .div-img-profile img {
+        width: 40%; // Ajusta o tamanho das imagens no modal em telas menores
+    }
+
+    .modal-content button {
+        padding: 0.7em 2em; // Ajusta o tamanho dos botões no modal em telas menores
+    }
+}
