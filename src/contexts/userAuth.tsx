@@ -196,7 +196,6 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         }
     };
 
-
     const signUpWithEmailAndPassword = async (email: string, password: string, displayName: string) => {
         try {
             const result = await createUserWithEmailAndPassword(auth, email, password);

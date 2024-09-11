@@ -1,6 +1,6 @@
 import './style.scss';
 import { useEffect, useState } from 'react';
-import { getDatabase, ref, onValue } from 'firebase/database'; // Adicione a importação do Firebase
+import { getDatabase, ref, onValue } from 'firebase/database';
 import img1 from '../../assets/img/img1.jpg';
 import img2 from '../../assets/img/img2.jpg';
 import img3 from '../../assets/img/img3.png';
@@ -11,23 +11,21 @@ export function Profile() {
     const { user, updateAvatar } = useAuth();
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
-    const [avatar, setAvatar] = useState<string>(user?.avatar || '');
+    const [avatar, setAvatar] = useState<string>('');
+    const [loadingAvatar, setLoadingAvatar] = useState(true);
 
     useEffect(() => {
-        if (!user?.id) return; // Verifica se o ID do usuário está disponível
-
+        if (!user?.id) return;
         const db = getDatabase();
         const userRef = ref(db, 'users/' + user.id);
-
-        // Define um listener para mudanças na referência do banco de dados
         const unsubscribe = onValue(userRef, (snapshot) => {
             const userData = snapshot.val();
             if (userData && userData.avatar) {
                 setAvatar(userData.avatar);
+                setLoadingAvatar(true);
             }
         });
 
-        // Limpeza do listener quando o componente é desmontado
         return () => {
             unsubscribe();
         };
@@ -48,10 +46,20 @@ export function Profile() {
         }
     };
 
+    const handleImageLoad = () => {
+        setLoadingAvatar(false);
+    };
+
     return (
         <div className='container-profile'>
             <div className='profile'>
-                <img className='img-modal' src={avatar} alt="Avatar" />
+                <div className='div-img'>
+                    {loadingAvatar && <div className='di-loading'>
+                        <div className='div-loading'>
+                        </div>
+                    </div>}
+                    <img className='img-modal' src={avatar} onLoad={handleImageLoad} />
+                </div>
                 <button className='btn-modal' onClick={handleModal}>Mudar avatar</button>
 
                 <div className='info-profile'>
