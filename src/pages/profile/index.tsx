@@ -1,6 +1,5 @@
 import './style.scss';
 import { useState } from 'react';
-import IMGTESTE from '../../assets/img/vecteezy_profile-icon-design-vector_5544718.jpg';
 import img1 from '../../assets/img/img1.jpg';
 import img2 from '../../assets/img/img2.jpg';
 import img3 from '../../assets/img/img3.png';
@@ -30,7 +29,7 @@ export function Profile() {
     return (
         <div className='container-profile'>
             <div className='profile'>
-                <img className='img-modal' src={user?.avatar || IMGTESTE} alt="TESTE" />
+                <img className='img-modal' src={user?.avatar} alt="Avatar" />
                 <button className='btn-modal' onClick={handleModal}>Mudar avatar</button>
 
                 <div className='info-profile'>
