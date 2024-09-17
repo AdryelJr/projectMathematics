@@ -3,12 +3,12 @@
     display: flex;
     transition: all .2s ease-in-out;
     flex-direction: column;
+    overflow: auto;
 
     .profile {
         margin-left: 0;
         flex-direction: column;
         display: flex;
-        width: 35%;
         align-items: center;
 
         .div-img {
@@ -50,12 +50,6 @@
         }
     }
 
-    @keyframes spin {
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
     button {
         margin: .5em 0 3em 0;
         padding: .7em 1.5em;
@@ -85,6 +79,7 @@
 .conquistas {
     .conquistas-page {
         text-align: center;
+        width: 50vw;
 
         h1 {
             font-size: 3em;
@@ -93,19 +88,21 @@
 
         .conquistas-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            justify-items: center;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1em;
+            overflow-x: auto;
+            padding: 1em;
         }
 
         .conquista {
-            margin-top: 2em;
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: 0.5em;
+
+
 
             @keyframes scaleConquist {
-
                 0% {
                     transform: scale(1);
                 }
@@ -135,7 +132,6 @@
             }
         }
     }
-
 }
 
 .modal {
@@ -177,8 +173,8 @@
                 transition: all 0.1s ease-in-out;
 
                 &.selected {
-                    border: 4px solid #9176FF; // Borda para a imagem selecionada
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); // Efeito de sombra na imagem selecionada
+                    border: 4px solid #9176FF;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
                 }
             }
         }
@@ -216,22 +212,41 @@
     }
 }
 
+// Media queries para dispositivos maiores
+@media (min-width: 1024px) {
+    .conquistas-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width: 1023px) {
+    .conquistas-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        overflow-x: scroll;
+    }
+}
+
 @media (min-width: 768px) {
     .container-profile {
-        flex-direction: row; // Alinhamento em telas maiores
+        flex-direction: row;
     }
 
     .profile {
-        width: 35%; // Alinhamento para telas maiores
+        width: 35%;
         margin-left: -1em;
     }
 
     .modal-content {
-        max-width: 500px; // Mantém o tamanho máximo do modal em telas maiores
+        max-width: 500px;
     }
 }
 
+// Media queries para dispositivos menores
 @media (max-width: 767px) {
+    .container-profile {
+        overflow: scroll;
+    }
+
     .profile {
         width: 100% !important;
 
@@ -241,18 +256,37 @@
     }
 
     .profile img {
-        width: 40% !important; // Aumenta a imagem do perfil em telas menores
+        width: 50%;
     }
 
     .profile .info-profile p {
-        font-size: 1em; // Ajuste de fonte para telas menores
+        font-size: 1em;
     }
 
     .modal-content .div-img-profile img {
-        width: 40%; // Ajusta o tamanho das imagens no modal em telas menores
+        width: 50%;
     }
 
     .modal-content button {
-        padding: 0.7em 2em; // Ajusta o tamanho dos botões no modal em telas menores
+        padding: 0.7em 2em;
+    }
+
+    .conquistas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100vw;
+        padding: 2em !important;
+    }
+
+    .conquistas {
+        margin: 1em 0 1em 0 !important;
+        border-top: 2px solid #ccc;
+
+        .conquistas-page {
+            margin-top: 2em;
+            h1 {
+                font-size: 2em !important;
+                color: #fff;
+            }
+        }
     }
 }
