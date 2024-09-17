@@ -6,6 +6,15 @@ import img2 from '../../assets/img/img2.jpg';
 import img3 from '../../assets/img/img3.png';
 import img4 from '../../assets/img/img4.png';
 import { useAuth } from '../../hooks/useAuth';
+import svgTrofeu from '../../assets/svg/trofeu.svg';
+import imgTrofeu from '../../assets/img/trofeu.png';
+
+interface QuestionData {
+    correctAnswer: string;
+    isCorrect: boolean;
+    question: string;
+    selectedAnswer: string;
+}
 
 export function Profile() {
     const { user, updateAvatar } = useAuth();
@@ -50,6 +59,52 @@ export function Profile() {
         setLoadingAvatar(false);
     };
 
+
+    // PAGINA CONQUISTA ------------------------------------------------------------------------
+    const [conquistas, setConquistas] = useState({
+        additionEasy: false,
+        additionHard: false,
+        subtractionEasy: false,
+        subtractionHard: false,
+        multiplicationEasy: false,
+        multiplicationHard: false,
+        divisionEasy: false,
+        divisionHard: false
+    });
+
+    useEffect(() => {
+        if (!user?.id) return;
+
+        const db = getDatabase();
+        const answersRef = ref(db, `users/${user.id}/answers`);
+
+        const unsubscribe = onValue(answersRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                const newConquistas = {
+                    additionEasy: checkConquista(data.addition?.easy),
+                    additionHard: checkConquista(data.addition?.hard),
+                    subtractionEasy: checkConquista(data.subtraction?.easy),
+                    subtractionHard: checkConquista(data.subtraction?.hard),
+                    multiplicationEasy: checkConquista(data.multiplication?.easy),
+                    multiplicationHard: checkConquista(data.multiplication?.hard),
+                    divisionEasy: checkConquista(data.division?.easy),
+                    divisionHard: checkConquista(data.division?.hard),
+                };
+                setConquistas(newConquistas);
+            }
+        });
+
+        return () => unsubscribe();
+    }, [user?.id]);
+
+    // Verifica se todas as perguntas foram respondidas corretamente
+    const checkConquista = (nivel: Record<string, QuestionData> | undefined): boolean => {
+        if (!nivel) return false;
+        return Object.values(nivel).every((question) => question.isCorrect);
+    };
+
+
     return (
         <div className='container-profile'>
             <div className='profile'>
@@ -63,14 +118,59 @@ export function Profile() {
                 <button className='btn-modal' onClick={handleModal}>Mudar avatar</button>
 
                 <div className='info-profile'>
-                    <p>Nome: {user?.name}</p>
-                    <p>Email: {user?.email}</p>
+                    <p>Nome: <br /> {user?.name}</p>
+                    <p>Email: <br />{user?.email}</p>
                 </div>
             </div>
 
+
             <div className='conquistas'>
-                CONQUISTAS
+                <div className="conquistas-page">
+                    <h1>Conquistas</h1>
+                    <div className="conquistas-grid">
+                        {/* Adição */}
+                        <div className="conquista">
+                            <img src={conquistas.additionEasy ? imgTrofeu : svgTrofeu} className={conquistas.additionEasy ? 'trofeu-colorido' : ''} alt="Troféu Adição Fácil" />
+                            <p>Acerte todas as questões <h2>Adição Fácil</h2> </p>
+                        </div>
+                        <div className="conquista">
+                            <img src={conquistas.additionHard ? imgTrofeu : svgTrofeu} className={conquistas.additionHard ? 'trofeu-colorido' : ''} alt="Troféu Adição Difícil" />
+                            <p>Acerte todas as questões <h2>Adição Difícil</h2> </p>
+                        </div>
+
+                        {/* Subtração */}
+                        <div className="conquista">
+                            <img src={conquistas.subtractionEasy ? imgTrofeu : svgTrofeu} className={conquistas.subtractionEasy ? 'trofeu-colorido' : ''} alt="Troféu Subtração Fácil" />
+                            <p>Acerte todas as questões <h2>Subtração Fácil</h2> </p>
+                        </div>
+                        <div className="conquista">
+                            <img src={conquistas.subtractionHard ? imgTrofeu : svgTrofeu} className={conquistas.subtractionHard ? 'trofeu-colorido' : ''} alt="Troféu Subtração Difícil" />
+                            <p>Acerte todas as questões <h2>Subtração Difícil</h2> </p>
+                        </div>
+
+                        {/* Multiplicação */}
+                        <div className="conquista">
+                            <img src={conquistas.multiplicationEasy ? imgTrofeu : svgTrofeu} className={conquistas.multiplicationEasy ? 'trofeu-colorido' : ''} alt="Troféu Multiplicação Fácil" />
+                            <p>Acerte todas as questões <h2>Multiplicação Fácil</h2> </p>
+                        </div>
+                        <div className="conquista">
+                            <img src={conquistas.multiplicationHard ? imgTrofeu : svgTrofeu} className={conquistas.multiplicationHard ? 'trofeu-colorido' : ''} alt="Troféu Multiplicação Difícil" />
+                            <p>Acerte todas as questões <h2>Multiplicação Difícil</h2> </p>
+                        </div>
+
+                        {/* Divisão */}
+                        <div className="conquista">
+                            <img src={conquistas.divisionEasy ? imgTrofeu : svgTrofeu} className={conquistas.divisionEasy ? 'trofeu-colorido' : ''} alt="Troféu Divisão Fácil" />
+                            <p>Acerte todas as questões <h2>Divisão Fácil</h2> </p>
+                        </div>
+                        <div className="conquista">
+                            <img src={conquistas.divisionHard ? imgTrofeu : svgTrofeu} className={conquistas.divisionHard ? 'trofeu-colorido' : ''} alt="Troféu Divisão Difícil" />
+                            <p>Acerte todas as questões <h2>Divisão Difícil</h2> </p>
+                        </div>
+                    </div>
+                </div>
             </div>
+
 
             {modalOpen && (
                 <div className='modal'>

@@ -82,9 +82,61 @@
     }
 }
 
-// .conquistas {
-//     // ainda vou me decidir oq vou fazer
-// }
+.conquistas {
+    .conquistas-page {
+        text-align: center;
+
+        h1 {
+            font-size: 3em;
+            color: #fff;
+        }
+
+        .conquistas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .conquista {
+            margin-top: 2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            @keyframes scaleConquist {
+
+                0% {
+                    transform: scale(1);
+                }
+
+                50% {
+                    transform: scale(1.1);
+                }
+
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            .trofeu-colorido {
+                animation: scaleConquist 3s linear infinite;
+            }
+
+            img {
+                width: 10em;
+                height: 8em;
+            }
+
+            p {
+                margin-top: 10px;
+                font-size: 14px;
+                font-weight: bold;
+            }
+        }
+    }
+
+}
 
 .modal {
     position: absolute;
