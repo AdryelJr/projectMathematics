@@ -3,7 +3,8 @@
     display: flex;
     transition: all .2s ease-in-out;
     flex-direction: column;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     .profile {
         margin-left: 0;
@@ -244,7 +245,8 @@
 // Media queries para dispositivos menores
 @media (max-width: 767px) {
     .container-profile {
-        overflow: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 
     .profile {
