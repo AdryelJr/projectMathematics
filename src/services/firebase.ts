@@ -42,13 +42,15 @@ function getNextOperation(currentOperation: string): string | null {
     return index < operations.length - 1 ? operations[index + 1] : null;
 }
 
+
 const firebaseConfig = {
-    apiKey: "AIzaSyCCvZmFrvJyPLM8gKrzoY99EB_k9MgoC0E",
-    authDomain: "mathproject-3bc2d.firebaseapp.com",
-    projectId: "mathproject-3bc2d",
-    storageBucket: "mathproject-3bc2d.appspot.com",
-    messagingSenderId: "427048207848",
-    appId: "1:427048207848:web:00bae2285257a0b9e5d05d"
+    apiKey: "AIzaSyDvjzI-8uH1p4hZx8Q0LPPpVMpcRC-r6os",
+    authDomain: "matemagica-ff1bb.firebaseapp.com",
+    databaseURL: "https://matemagica-ff1bb-default-rtdb.firebaseio.com/",
+    projectId: "matemagica-ff1bb",
+    storageBucket: "matemagica-ff1bb.appspot.com",
+    messagingSenderId: "706535351747",
+    appId: "1:706535351747:web:f681827be320c33664c976"
 };
 
 const app = initializeApp(firebaseConfig);
